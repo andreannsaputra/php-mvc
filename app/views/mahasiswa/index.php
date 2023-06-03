@@ -11,7 +11,8 @@
             <h3>Daftar Mahasiswa</h3>
 
             <!-- Button trigger modal -->
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#formModal">
+            <button type="button" class="btn btn-primary 
+            tombolTambahData" data-bs-toggle="modal" data-bs-target="#formModal">
                 Tambah data
             </button>
 
@@ -22,6 +23,8 @@
                         <div>
                             <a href="<?= BASEURL; ?>/mahasiswa/detail/<?= $mhs['id']; ?>" class="badge text-bg-primary float-right">Detail</a>
                             <a href="<?= BASEURL; ?>/mahasiswa/hapus/<?= $mhs['id']; ?>" class="badge text-bg-danger float-right" onclick="return confirm('Yakin ?');">Delete</a>
+                            <a href="<?= BASEURL; ?>/mahasiswa/ubah/<?= $mhs['id']; ?>" class="badge text-bg-warning float-right
+                            ubahModal" data-bs-toggle="modal" data-bs-target="#formModal" data-id="<?= $mhs['id']; ?> ">Ubah</a>
                         </div>
                     </li>
                 <?php endforeach; ?>
@@ -32,15 +35,16 @@
 </div>
 
 <!-- Modal -->
-<div class="modal fade" id="formModal" tabindex="-1" aria-labelledby="judulModal" aria-hidden="true">
+<div class="modal fade" id="formModal" tabindex="-1" aria-labelledby="formModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h1 class="modal-title fs-5" id="judulModal">Tambah data mahasiswa</h1>
+                <h1 class="modal-title fs-5" id="formModalLabel">Tambah data mahasiswa</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <form action="<?= BASEURL; ?>/mahasiswa/tambah" method="post">
+                    <input type="hidden" name="id" id="id">
                     <div class="mb-3">
                         <label for="nama" class="form-label">Nama</label>
                         <input type="text" class="form-control" id="nama" name="nama">
